@@ -9,9 +9,32 @@ const getCharacter = async () => {
   const url = `https://rickandmortyapi.com/api/character/${id}`;
   const data = await fetch(url);
   const parsedData = await data.json();
-  console.log(parsedData);
   name.textContent = parsedData.name;
   image.src = parsedData.image;
+};
+
+const getAllCharacters = async () => {
+  try {
+    const url = "https://rickandmortyapi.com/api/character";
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const firstPageCharacters = data.results.slice(0, 8);
+    console.log(firstPageCharacters);
+    const charactersContainer = document.querySelector(".characters-container");
+    firstPageCharacters.map((character) => {
+      const characterElement = document.createElement("div");
+      characterElement.className = "character-card";
+      characterElement.innerHTML = `
+        <img src="${character.image}" alt="${character.name}">
+        <h3>${character.name}</h3>
+        // <button class="add-favourite" data-id="${character.id}">Add to Favourites</button>
+      `;
+      charactersContainer.appendChild(characterElement);
+    });
+  } catch (error) {
+    console.error("Failed to fetch characters:", error);
+  }
 };
 
 const addToFavourite = async () => {
@@ -30,6 +53,7 @@ const addToFavourite = async () => {
   }
 };
 
-getCharacter();
+// getCharacter();
+getAllCharacters();
 button.onclick = getCharacter;
 addFavouriteButton.onclick = addToFavourite;

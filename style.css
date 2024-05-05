@@ -34,7 +34,7 @@ main {
 
 #character-card {
   text-align: center;
-  width: 300px;
+  width: 290px;
   border: 1px solid #666;
   padding: 20px;
   border-radius: 10px;
@@ -54,4 +54,44 @@ main {
 
 #add-favourite {
   background-color: red;
+}
+
+button:hover {
+  background-color: #777;
+}
+
+button.active {
+  background-color: #222;
+}
+
+.content {
+  display: none;
+}
+
+.content.active {
+  display: block;
+}
+
+/* Initially set the first button as active */
+#btn-random.active {
+  background-color: #222;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+.character-card {
+  text-align: center;
+}
+.character-card img {
+  width: 100%;
+  border-radius: 8px;
 }
