@@ -18,6 +18,9 @@ const addToFavourite = async () => {
   const localCharacters = localStorage.getItem("characters");
   if (localCharacters) {
     const parsedCharacters = JSON.parse(localCharacters);
+    if (parsedCharacters.includes(id)) {
+      return;
+    }
     localStorage.setItem(
       "characters",
       JSON.stringify([...parsedCharacters, id])
