@@ -14,27 +14,34 @@ const getCharacter = async () => {
 };
 
 const getAllCharacters = async () => {
-  try {
-    const url = "https://rickandmortyapi.com/api/character";
-    const response = await fetch(url);
-    const data = await response.json();
+  const url = "https://rickandmortyapi.com/api/character";
+  const response = await fetch(url);
+  const data = await response.json();
 
-    const firstPageCharacters = data.results.slice(0, 8);
-    console.log(firstPageCharacters);
-    const charactersContainer = document.querySelector(".characters-container");
-    firstPageCharacters.map((character) => {
-      const characterElement = document.createElement("div");
-      characterElement.className = "character-card";
-      characterElement.innerHTML = `
-        <img src="${character.image}" alt="${character.name}">
-        <h3>${character.name}</h3>
-        // <button class="add-favourite" data-id="${character.id}">Add to Favourites</button>
-      `;
-      charactersContainer.appendChild(characterElement);
-    });
-  } catch (error) {
-    console.error("Failed to fetch characters:", error);
-  }
+  const firstPageCharacters = data.results.slice(0, 8);
+  console.log(firstPageCharacters);
+  firstPageCharacters.map((character) => {
+    const htmlCard = `          
+      <div class="card">
+              <img id="character-image" src="${character.image}" alt="">
+              <div class="card-info">
+                  <div class="card-row">
+                      <div id="character-id">${character.id}</div>. <span id="character-name">${character.name}</span>
+                  </div>
+                  <div class="card-row status-row">
+                      <div id="status-circle" data-status='${character.status}'></div> <span id="status-text">${character.status}</span>
+                  </div>
+                  <div class="card-row">
+                      <div>Gender:</div> <span id="character-gender">${character.gender}</span>
+                  </div>
+                  <div class="card-row">
+                      <div>Species:</div> <span id="character-species">${character.species}</span>
+                  </div>
+              </div>
+          </div>
+          `;
+    container.insertAdjacentHTML("beforeend", htmlCard);
+  });
 };
 
 const addToFavourite = async () => {

@@ -2,25 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Rick and Morty</title>
+    <link rel="stylesheet" href="./styles/style.css" />
     <script src="script.js" async defer></script>
   </head>
   <body>
-    <nav>
-      <button>Random Character</button>
-      <button>All Characters</button>
-      <button>Favorite Characters</button>
-    </nav>
+    <header class="header">
+      <nav>
+        <ul class="header-nav">
+          <li><a href="./random-character.html">Random character</a></li>
+          <li><a href="./index.html">All characters</a></li>
+          <li><a href="./favorites.html">Favorite Characters</a></li>
+        </ul>
+      </nav>
+    </header>
     <main>
-      <!-- <div id="character-card">
-        <img src="" alt="" id="character-image" />
-        <h1 id="character-name">Investigator Rick</h1>
-        <button id="fetch-character">Get Random Character</button>
-        <button id="add-favourite">Add to Favorite</button>
-      </div> -->
-      <div id="characters-grid" class="characters-grid"></div>
+      <h1 class="ram-title">
+        Total characters: <span id="total-characters">loading...</span>
+      </h1>
+      <div class="container" id="container">
+        <!-- Get data from api -->
+      </div>
     </main>
+    <div class="pagination">
+      <button id="load-more">Load more...</button>
+    </div>
   </body>
 </html>
