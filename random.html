@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Random Character</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="random.js" async defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <ul class="header-nav">
+          <li><a href="./index.html">Random character</a></li>
+          <li><a href="./random-character.html">All characters</a></li>
+          <li><a href="./favorites.html">Favorite Characters</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="character-card">
+        <img src="" alt="" id="character-image" />
+        <h1 id="character-name">Investigator Rick</h1>
+        <div class="random-character-buttons">
+          <button class="get-random" id="fetch-character">
+            Get Random Character
+          </button>
+          <button class="add-to-favourite" id="add-to-favourite">
+            Add to Favorite
+          </button>
+        </div>
+      </div>
+      <div id="characters-grid" class="characters-grid"></div>
+    </main>
+  </body>
+</html>
