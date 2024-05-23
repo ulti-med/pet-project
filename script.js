@@ -1,66 +1,70 @@
-const name = document.querySelector("#character-name");
-const image = document.querySelector("#character-image");
-const button = document.querySelector("#fetch-character");
-const addFavouriteButton = document.querySelector("#add-favourite");
-let id;
+"use strict";
+let firstButton = document.querySelector("#first");
+let prevButton = document.querySelector("#prev");
+let nextButton = document.querySelector("#next");
+let lastButton = document.querySelector("#last");
+let totalCharacters = document.querySelector("#total-characters");
+let container = document.querySelector("#container");
 
-const getCharacter = async () => {
-  id = Math.floor(Math.random() * 826) + 1;
-  const url = `https://rickandmortyapi.com/api/character/${id}`;
+const apiUrl = "https://rickandmortyapi.com/api/character";
+let pages;
+let nextPageUrl;
+let prevPageUrl;
+let currentPage;
+
+const renderCards = async (url) => {
+  container.innerHTML = "";
   const data = await fetch(url);
   const parsedData = await data.json();
-  name.textContent = parsedData.name;
-  image.src = parsedData.image;
-};
+  totalCharacters.textContent = parsedData.info.count;
 
-const getAllCharacters = async () => {
-  const url = "https://rickandmortyapi.com/api/character";
-  const response = await fetch(url);
-  const data = await response.json();
+  pages = parsedData.info.pages;
+  nextPageUrl = parsedData.info.next;
+  prevPageUrl = parsedData.info.prev;
+  if (url === apiUrl) {
+    currentPage = Number(1);
+  } else {
+    currentPage = Number(url.split("page=")[1]);
+  }
 
-  const firstPageCharacters = data.results.slice(0, 8);
-  console.log(firstPageCharacters);
-  firstPageCharacters.map((character) => {
+  if (currentPage === 1) {
+    firstButton.disabled = true;
+    prevButton.disabled = true;
+    lastButton.disabled = false;
+    nextButton.disabled = false;
+  } else if (currentPage === pages) {
+    lastButton.disabled = true;
+    nextButton.disabled = true;
+    firstButton.disabled = false;
+    prevButton.disabled = false;
+  } else {
+    firstButton.disabled = false;
+    prevButton.disabled = false;
+    lastButton.disabled = false;
+    nextButton.disabled = false;
+  }
+
+  parsedData.results.forEach((character) => {
     const htmlCard = `          
-      <div class="card">
-              <img id="character-image" src="${character.image}" alt="">
-              <div class="card-info">
-                  <div class="card-row">
-                      <div id="character-id">${character.id}</div>. <span id="character-name">${character.name}</span>
-                  </div>
-                  <div class="card-row status-row">
-                      <div id="status-circle" data-status='${character.status}'></div> <span id="status-text">${character.status}</span>
-                  </div>
-                  <div class="card-row">
-                      <div>Gender:</div> <span id="character-gender">${character.gender}</span>
-                  </div>
-                  <div class="card-row">
-                      <div>Species:</div> <span id="character-species">${character.species}</span>
-                  </div>
-              </div>
-          </div>
-          `;
+    <div id="character-card">
+    <img src=${character.image} alt="" id="character-image" />
+    <h1 id="character-name">${character.name}</h1>
+    <div class="random-character-buttons">
+      <button class="get-random" id="fetch-character">
+        Delete
+      </button>
+    </div>
+  </div>
+                `;
     container.insertAdjacentHTML("beforeend", htmlCard);
   });
 };
 
-const addToFavourite = async () => {
-  const localCharacters = localStorage.getItem("characters");
-  if (localCharacters) {
-    const parsedCharacters = JSON.parse(localCharacters);
-    if (parsedCharacters.includes(id)) {
-      return;
-    }
-    localStorage.setItem(
-      "characters",
-      JSON.stringify([...parsedCharacters, id])
-    );
-  } else {
-    localStorage.setItem("characters", JSON.stringify([id]));
-  }
-};
+renderCards(apiUrl);
 
-// getCharacter();
-getAllCharacters();
-button.onclick = getCharacter;
-addFavouriteButton.onclick = addToFavourite;
+firstButton.onclick = () =>
+  renderCards("https://rickandmortyapi.com/api/character?page=1");
+prevButton.onclick = () => renderCards(prevPageUrl);
+nextButton.onclick = () => renderCards(nextPageUrl);
+lastButton.onclick = () =>
+  renderCards(`https://rickandmortyapi.com/api/character?page=${pages}`);
