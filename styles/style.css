@@ -16,6 +16,11 @@ body {
 main {
   padding: 0 5%;
 }
+
+img {
+  width: 273px;
+  height: 275px;
+}
 .header {
   display: flex;
   justify-content: center;
@@ -132,4 +137,12 @@ button:hover {
   border: 2px solid #29e118;
   border-radius: 10px;
   max-width: 130px;
+}
+
+.delete-favourite {
+  background-color: #e71818;
+  font-size: clamp(0.7rem, 1vw, 1.4rem);
+  padding: 5px 15px;
+  border: 2px solid #e71818;
+  border-radius: 10px;
 }
