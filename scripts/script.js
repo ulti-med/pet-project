@@ -1,6 +1,6 @@
 const name = document.querySelector("#character-name");
 const image = document.querySelector("#character-image");
-const button = document.querySelector("#fetch-character");
+const button = document.querySelector(".random-character-buttons");
 const addFavouriteButton = document.querySelector("#add-favourite");
 let id;
 
@@ -29,7 +29,7 @@ const getAllCharacters = async () => {
                       <div id="character-id">${character.id}</div>. <span id="character-name">${character.name}</span>
                   </div>
                   <div class="card-row status-row">
-                      <div id="status-circle" data-status='${character.status}'></div> <span id="status-text">${character.status}</span>
+                      <div id="status-circle" class="status-circle" data-status='${character.status}'></div> <span id="status-text">${character.status}</span>
                   </div>
                   <div class="card-row">
                       <div>Gender:</div> <span id="character-gender">${character.gender}</span>

@@ -1,7 +1,7 @@
 const name = document.querySelector("#character-name");
 const image = document.querySelector("#character-image");
-const button = document.querySelector("#fetch-character");
-const addFavouriteButton = document.querySelector("#add-to-favourite");
+const button = document.querySelector(".get-random");
+const addFavouriteButton = document.querySelector(".add-to-favourite");
 let id;
 
 const getCharacter = async () => {
