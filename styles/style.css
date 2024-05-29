@@ -4,7 +4,6 @@
   --main-success-color: #29e118;
   --main-error-color: #e71818;
 }
-
 * {
   padding: 0;
   margin: 0;
@@ -152,4 +151,34 @@ button:hover {
   padding: 5px 15px;
   border: 2px solid var(--main-error-color);
   border-radius: 10px;
+}
+
+@media (max-width: 1220px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    gap: 10px;
+  }
+  .card > img {
+    width: 50%;
+  }
+  .card-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-row {
+    display: flex;
+    /* align-items: center; */
+    gap: 0px;
+    font-size: clamp(0.9rem, 4vw, 1.4rem);
+  }
 }
