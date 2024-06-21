@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 35px 20px;
+  gap: 10px;
+  align-items: center;
+}
+
+.catalog-button {
+  border-radius: 20px;
+  width: 160px;
+  height: 60px;
+  align-items: center;
+  align-self: center;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #333333;
+}
+
+.catalog-button__layout {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper > img {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.website-search {
+  margin-right: auto;
+  border-radius: 20px;
+  width: 450px;
+  height: 54px;
+  padding-left: 15px;
+  border: 1px solid #333333;
+}
+
+.website-search::placeholder {
+  background-color: aqua;
+}
+
+.recommendations {
+  width: 100vw;
+  background-color: #955151;
+  margin-bottom: 84px;
+  padding: 40px 20px;
+}
+
+.recommendations__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.recommendations__container {
+  display: flex;
+  gap: 20px;
+}
+.recommendations__container__image {
+  width: 271px;
+  height: 280px;
+  border-radius: 20px;
+  transition: transform 0.3s, opacity 1s;
+}
+
+.recommendations__container__image:hover {
+  transform: scale(1.2);
+  opacity: 0;
+}
+.solutions {
+  background-color: #f2f2f2;
+}
+
+.solutions__container {
+  /* width: calc(100vw - 20%); */
+  height: 792px;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  gap: 20px;
+  border: 1px solid blue;
+  padding: 0 10%;
+}
+.solutions__container__horizontal__block_upper {
+  background-color: #f2f;
+}
+
+.solutions__container__horizontal__block__low {
+  background-color: seagreen;
+  grid-column: 1/2;
+}
+
+.solutions__container__vertical__block__left {
+  grid-row: 1/3;
+  grid-column: 2/3;
+  background-color: red;
+}
+
+.solutions__container__vertical__block__right {
+  grid-row: 1/3;
+  grid-column: 3/3;
+  background-color: yellow;
+}
+
+.keyword-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 116px 0;
+  gap: 10px;
+}
+
+.keyword-search__input {
+  justify-content: center;
+  border-radius: 20px;
+  padding-left: 15px;
+  width: 650px;
+  height: 54px;
+}
+
+.footer {
+  margin-top: 160px;
+  width: 100vw;
+  height: 120px;
+  background-color: #333333;
+}
+
+.footer__brands {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
