@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+.header-block {
+  display: flex;
+  gap: 10px;
+}
+
 .catalog-button {
   border-radius: 20px;
   width: 160px;
